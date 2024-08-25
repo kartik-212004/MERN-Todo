@@ -1,7 +1,6 @@
 export default async function deleteFunction(e) {
     let name;
     name = e.target.parentNode.innerText;
-    console.log(name)
     await fetch('http://localhost:3000', {
         method: "DELETE",
         headers: { 'Content-Type': 'application/json' },

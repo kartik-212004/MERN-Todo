@@ -21,10 +21,8 @@ app.get('/', async (req, res) => {
 // delete
 app.delete('/', async (req, res) => {
     const title = req.body;
-    console.log(title)
     try {
         const user = await schema.findOne(title);
-        console.log(user._id.toString())
         const deletepayload = await schema.findByIdAndDelete(user._id.toString())
         res.status(200).json(deletepayload);
     } catch (error) {
@@ -38,7 +36,6 @@ app.post('/', async (req, res) => {
     try {
         const parsepayload = create.safeParse(createPayload);
         const createdPayload = await schema.create(parsepayload.data)
-        console.log(createdPayload)
         res.status(200).json(createdPayload)
 
     } catch (error) {
